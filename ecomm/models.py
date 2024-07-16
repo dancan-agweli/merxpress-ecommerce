@@ -11,7 +11,8 @@ class SignUp(models.Model):
     phone=models.BigIntegerField()
     password=models.CharField(max_length=10)
     confirm_password=models.CharField(max_length=10) #No need of it we just have to compare it while taking input NO NEED THIS FIELD
-    
+    def __str__(self):
+        return self.email
 # order page models
 
 class Product(models.Model):
