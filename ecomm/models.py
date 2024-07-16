@@ -2,15 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 class SignUp(models.Model):
-    username=models.CharField(max_length=50) #Noo Need we will use email as username and primary key
-    email=models.EmailField(max_length=50,primary_key=True)
-    fname = models.CharField(max_length = 20)
-    lname = models.CharField(max_length = 20)
-    dob = models.DateField() # helps for further in ml for user suggestion
-    #gender = models.CharField(max_length = 10) Optional field for user
-    phone=models.BigIntegerField()
-    password=models.CharField(max_length=10)
-    confirm_password=models.CharField(max_length=10) #No need of it we just have to compare it while taking input NO NEED THIS FIELD
+    username = models.CharField(max_length=50, unique=True)  # Assuming you want to use email as username and it should be unique
+    email = models.EmailField(max_length=50, primary_key=True)  # Use email as primary key
+    fname = models.CharField(max_length=20)
+    lname = models.CharField(max_length=20)
+    dob = models.DateField()  # Date of birth
+    phone = models.BigIntegerField()
+    password = models.CharField(max_length=10)
+    # confirm_password = models.CharField(max_length=10)  # No need for a separate confirm_password field
+
     def __str__(self):
         return self.email
 # order page models
